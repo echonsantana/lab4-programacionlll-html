@@ -1,0 +1,862 @@
+:root{
+      --dark-blue: #163d5c;    /* topbar / footer */
+      --brand-blue: #009fe3;   /* sub-menu */
+      --mid-blue: #1e4d6a;     /* sección media */
+      --accent: #f59c1a;       /* naranja */
+    }
+    body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#222; }
+
+    /* ===== TOPBAR ===== */
+ /* ===== TOPBAR ===== */
+.topbar {
+  background-color: #1f497d; /* azul oscuro */
+  padding: 6px 0;
+  font-size: 14px;
+  
+}
+
+.topbar .currency {
+  color: white;
+  margin-left: 200px;         /* espacio respecto al logo */
+  margin-right: 200px; 
+}
+
+.topbar .currency .blue {
+  color: #00b6f1; /* celeste */
+  font-weight: 500;
+}
+
+.topbar .arrow {
+  font-size: 11px;
+  color: #f59c1a; /* naranja */
+  margin-left: 4px;
+}
+
+/* Links dentro del topbar */
+.topbar .links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.topbar .links > a,
+.topbar .links .menu-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.topbar .links a:hover {
+  text-decoration: underline;
+}
+
+/* Buscar */
+.topbar .links .search i {
+  color: #00b6f1;
+  font-size: 17px;
+}
+
+/* Dropdown (solo usamos este, limpio) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  padding: 8px 0;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  z-index: 3000;
+  border-radius: 2px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu h6 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #163d5c;
+  padding: 6px 14px;
+  margin: 0;
+  background: #f4f6f8;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f6fbff;
+  color: #009fe3;
+}
+
+
+/* ==== NAV PRINCIPAL (logo + categorías) ==== */
+/* NAV PRINCIPAL (logo + categorías) */
+.main-nav {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  
+}
+
+.main-nav .container {
+  display: flex;
+  align-items:center;
+  justify-content: flex-start;
+  gap: 40px; /* aquí controlas la separación entre logo y menú */
+}
+
+.main-nav img {
+  height: 60px;
+  width: auto;
+  
+}
+
+.nav-cats {
+  display: flex;
+  gap: 35px;                 /* espacio entre enlaces */
+  font-weight: 600;
+  margin-left: 250px;         /* espacio respecto al logo */
+  flex-wrap: nowrap;
+  max-width: 100%;           /* que no se pase del ancho */
+  margin-right: 500px; /* muévelo hacia la izquierda */
+}
+
+.nav-cats a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+  
+}
+
+.nav-cats a:hover {
+  color: #00b6f1;
+  
+}
+
+.main-nav img {
+  /*margin-left: 40px; /* muévelo hacia la derecha */
+  /* o */
+  margin-right: 30px; /* muévelo hacia la izquierda */
+}
+
+
+ /* ===== SUB-MENU AZUL ===== */
+.sub-menu {
+  background-color: #00b6f1;
+  position:absolute;
+  z-index: 1000; /* asegura que esté por encima del carrusel */
+}
+
+.sub-menu .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sub-menu .menu-item {
+  position: relative;
+}
+
+.sub-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-weight: 500;
+  display: block;
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.sub-menu .menu-item:last-child a {
+  border-right: none;
+}
+
+/* Triángulo del activo */
+.sub-menu a.active::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #00b6f1;
+}
+
+/* Triángulo fijo debajo de PERSONAL */
+.nav-cats a:first-child {
+  position: relative;
+  font-weight: bold;
+  color: #009fe3; /* azul del brand */
+}
+
+.nav-cats a:first-child::after {
+  content: "";
+  position: absolute;
+  top: 180%;  /* lo coloca justo debajo del enlace */
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #009fe3; /* ahora apunta hacia arriba */
+}
+
+
+/* ===== MEGA MENÚ ===== */
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: auto;              /* que se adapte al contenido */
+  max-width: 1000px;        /* límite para no crecer infinito */
+  background-color: #fff !important;
+  border-top: 1px solid #ddd;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px 30px;
+  flex-wrap: nowrap;
+}
+
+.sub-menu {
+  position: relative;
+  z-index: auto !important;
+}
+
+.menu-item:hover .mega-menu {
+  display: flex;              /* aparece solo al pasar el mouse */
+}
+
+/* Columnas del mega menú */
+.mega-menu .mega-col {
+  flex: none;
+ 
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  padding: 0 20px;
+  border-right: 1px solid #eee;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.mega-menu .mega-col:last-child {
+  border-right: none;
+}
+
+/* Encabezados */
+.mega-menu h4 {
+  color: #00b6f1;
+  font-weight: bold;
+  font-size: 15px;     /* más pequeño */
+  margin-bottom: 12px;
+}
+
+/* Lista */
+.mega-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.mega-menu ul li {
+  margin-bottom: 4px;
+}
+
+.mega-menu ul li a {
+  font-size: 12px;
+  line-height: 1.4;     /* reduce espacio vertical */
+  display: block;
+  padding: 2px 0;       /* menos espacio */
+  color: #333;
+  text-decoration: none;
+}
+
+.mega-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Botón "Ver todos" */
+.mega-menu .btn-ver {
+  display: inline-block;
+  margin-top: auto;        /* 👈 empuja hacia abajo */
+  padding: 8px 16px;
+  border: 1px solid #ff6600;
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.mega-menu .btn-ver:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+  z-index: 1 !important; /* por debajo del menú */
+}
+
+
+
+    /* ===== HERO / CARRUSEL ===== */
+    .hero-carousel .carousel-item {
+      height: 72vh;
+      min-height: 420px;
+      background-position:center;
+      background-size:cover;
+      position:relative;
+    }
+    .hero-overlay {
+      position: absolute;
+      left: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 52%;
+      color: #fff;
+    }
+    .hero-overlay h1 {
+      font-size: clamp(32px, 6vw, 72px);
+      line-height: 0.9;
+      font-weight:800;
+      margin-bottom: .5rem;
+      text-shadow:0 6px 20px rgba(0,0,0,0.45);
+    }
+    .hero-overlay p.lead {
+      font-size: clamp(16px, 2.2vw, 26px);
+      margin-bottom: 1.25rem;
+      text-shadow:0 6px 14px rgba(0,0,0,0.35);
+    }
+    .btn-outline-hero {
+      color: #fff;
+      border-color: rgba(255,255,255,0.9);
+      background: transparent;
+      padding: .6rem 1.1rem;
+      font-weight:700;
+      border-width:2px;
+    }
+
+    /* accessibility floating button */
+    .access-btn {
+      position: fixed;
+      left: 12px;
+      top: 45%;
+      z-index: 2000;
+      width:44px; height:44px;
+      border-radius:50%;
+      background: rgba(0,159,227,0.98);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.18);
+      color:#fff;
+      cursor:pointer;
+    }
+
+    /* ===== ACCESOS RAPIDOS (bajo hero) ===== */
+    .quick-access { padding: 28px 0; background:#f7f9fb; }
+    .quick-card {
+      background:#fff; border-radius:10px; text-align:center; padding:22px; border:1px solid rgba(0,0,0,0.04);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .quick-card:hover { transform: translateY(-8px); box-shadow:0 16px 32px rgba(0,0,0,0.08); }
+    .quick-card i { font-size:28px; color:var(--brand-blue); margin-bottom:8px; }
+
+    /* ===== NECESIDADES (pasos) ===== */
+    .needs .carousel-indicators [data-bs-target] {
+  width: 60px;
+  height: 4px;
+  background-color: #00aaff;
+  border: none;
+  border-radius: 2px;
+}
+
+.needs .carousel-indicators .active {
+  background-color: #00aaff;
+}
+
+.needs-tabs .nav-link {
+  color: #888;
+  border: none;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+.needs-tabs .nav-link.active {
+  color: #00aaff;
+  font-weight: bold;
+  border-bottom: 3px solid #00aaff;
+}
+.needs-tabs .nav-link i {
+  margin-bottom: 8px;
+}
+
+    /* ===== SECCIÓN AZUL (etapas de vida) ===== */
+.blue-section {
+  background: #1e4d6a;
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.etapas-vida {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.etapas-contenedor {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  position: relative;
+}
+
+/* Ocultar radios */
+input[type="radio"] {
+  display: none;
+}
+
+/* Columna izquierda */
+.etapas-lista {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.etapa-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 16px;
+  text-align: left;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Estado activo según radio */
+#pensionado:checked ~ .etapas-lista label[for="pensionado"],
+#joven:checked ~ .etapas-lista label[for="joven"],
+#emprendedor:checked ~ .etapas-lista label[for="emprendedor"] {
+  background: #fff;
+  color: #f59c1a;
+}
+
+/* Columna derecha */
+.etapas-contenido {
+  flex: 3;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.etapa-item {
+  display: none;
+  position: relative;
+}
+
+.etapa-item img {
+  width: 100%;
+  display: block;
+}
+
+/* Mostrar contenido según radio */
+#pensionado:checked ~ .etapas-contenido .pensionado,
+#joven:checked ~ .etapas-contenido .joven,
+#emprendedor:checked ~ .etapas-contenido .emprendedor {
+  display: block;
+}
+
+/* Botón "Conoce más" */
+.etapa-item .btn-ver {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: #f59c1a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.etapa-item .btn-ver:hover {
+  background: #d98200;
+}
+    /* ===== FRANJA PROMO GRANDE ===== */
+/* ===== SLIDER HERO ===== */
+.promo-slider {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  width: 300%;
+  height: 100%;
+  display: flex;
+}
+
+.promo-slider .slide {
+  width: 33.333%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 80px;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.2) 40%, rgba(0,53,94,0.9) 80%);
+}
+
+.promo-content {
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+}
+
+.promo-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.promo-content p {
+  margin-bottom: 20px;
+}
+
+.btn-promo {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 2px solid #f59c1a;
+  color: #f59c1a;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-promo:hover {
+  background: #f59c1a;
+  color: #fff;
+}
+
+/* ===== IMÁGENES ===== */
+.s1 { background-image: url("img/slide1.jpg"); }
+.s2 { background-image: url("img/slide2.jpg"); }
+.s3 { background-image: url("img/slide3.jpg"); }
+
+/* ===== NAVEGACIÓN (bolitas o flechas) ===== */
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.bar {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bar:hover {
+  background: #f59c1a;
+}
+
+/* ===== LÓGICA SLIDER con radio buttons ===== */
+input[type="radio"] {
+  display: none;
+}
+
+#slide1:checked ~ .slides { margin-left: 0; }
+#slide2:checked ~ .slides { margin-left: -100%; }
+#slide3:checked ~ .slides { margin-left: -200%; }
+
+.slides {
+  transition: margin-left 0.6s ease-in-out;
+}
+
+
+    /* ===== PROMOCIONES ESPECIALES ===== */
+.programs {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Texto | Imágenes */
+  align-items: center;
+  gap: 30px;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: #6d8c9e; /* color de fondo gris/azulado */
+  padding: 80px;
+  color: #fff;
+}
+
+/* Columna izquierda */
+.programs .left h4 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.programs .left p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Columna derecha: grid 2x2 */
+.programs .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.programs .grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+
+    /* ===== BLOQUES NARANJAS DE ACCESO ===== */
+.orange-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 50%;
+}
+
+.orange-block {
+  background: #f58220; /* naranja Banreservas */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  text-align: center;
+  border: 1px solid #fff; /* línea divisoria blanca */
+  font-size: 1rem;
+}
+
+.orange-block i {
+  font-size: 2rem;
+  margin-bottom: 50px;
+}
+
+
+    /* ===== SALA DE PRENSA ===== */
+    .press { padding: 56px 0; background:#f4f6f8; }
+    .press .press-card { background:#fff; border-radius:6px; padding:12px; border:1px solid rgba(0,0,0,0.04); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-blue);
+      color:#dbeaf6;
+      padding:40px 0 18px;
+    }
+    footer a { color:#dbeaf6; text-decoration:none; }
+    footer .legal { font-size:.85rem; color: #b9d7ef; }
+
+    /* Responsive */
+    @media (max-width:991px){
+      .hero-overlay { max-width: 80%; left:4%; }
+      .programs { grid-template-columns: 1fr; }
+      .programs .grid img { height:120px; }
+      .promo-strip { height:200px; }
+      .hero-carousel .carousel-item { height:50vh; min-height:300px; }
+      .promo-strip .promo-box { position: static; transform:none; margin:16px auto; text-align:center; max-width:90%; }
+    }
+
+    /* ===== TOPBAR DROPDOWNS estilo Banreservas-like ===== */
+.topbar .links {
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+/* menu-item posiciona su dropdown */
+.topbar .menu-item {
+  position: relative;
+  display: inline-block;
+}
+
+/* enlace principal del menu (texto blanco, flecha naranja) */
+.topbar .menu-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* flecha */
+.topbar .menu-link .arrow,
+.topbar .arrow {
+  color: #f59c1a; /* naranja */
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* contenedor del dropdown (oculto por defecto) */
+.topbar .menu-item .dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);    /* separacion del topbar */
+  left: 0;                  /* se alinea al link */
+  min-width: 260px;         /* ancho por defecto */
+  max-width: 360px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  z-index: 99999 !important;
+  overflow: hidden;
+  padding: 6px 0;
+}
+
+/* Mostrar en hover o focus (accesibilidad) */
+.topbar .menu-item:hover .dropdown-content,
+.topbar .menu-item:focus-within .dropdown-content {
+  display: block;
+}
+
+/* Enlaces dentro del dropdown */
+.topbar .dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid #f1f3f6;
+}
+
+/* Ultimo item sin borde */
+.topbar .dropdown-item:last-of-type {
+  border-bottom: none;
+}
+
+/* Hover en item */
+.topbar .dropdown-item:hover {
+  background: #f6fbff;
+  color: var(--brand-blue, #00b6f1);
+}
+
+/* Secciones internas (PERSONAS / EMPRESAS) */
+.topbar .dropdown-section {
+  padding: 6px 0 10px 0;
+}
+
+/* Titulo de sección (fondo azul oscuro y texto blanco) */
+.topbar .dropdown-title {
+  background: var(--dark-blue, #163d5c);
+  color: #fff;
+  font-weight: 700;
+  padding: 8px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Opcional: item destacado (ej. primer link) */
+.topbar .dropdown-item.highlight {
+  font-weight: 700;
+  color: var(--dark-blue, #163d5c);
+}
+
+/* Asegurar que los enlaces del topbar sigan en blanco */
+.topbar .links > a,
+.topbar .links .menu-link {
+  color: #fff;
+}
+
+/* Icono buscador */
+.topbar .links .search i {
+  color: #00b6f1;
+  font-size: 17px;
+}
+
+/* Ajustes para pantallas pequeñas: no hover, mostrar como bloque simple */
+@media (max-width: 992px) {
+  .topbar .links { gap:8px; }
+  .topbar .menu-item .dropdown-content { position: static; box-shadow:none; border-radius:0; display:none; background:#fff; }
+  .topbar .menu-item:focus-within .dropdown-content { display:block; }
+}
+
+/* ====== Dropdown ====== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 220px;
+  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f1f1;
+  color: #00b6f1;
+}
+
+.dropdown-menu h6 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #163d5c;
+  padding: 8px 16px;
+  margin: 0;
+  background: #f4f6f8;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+    
